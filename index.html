@@ -3,339 +3,700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RiskVector - Risk Intelligence & Management App</title>
+    <title>RiskVector - Enterprise Risk Intelligence Platform</title>
+    
+    <!-- Google Fonts Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* CSS Reset & Modern Normalize */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Premium Design System */
+        :root {
+            /* Colors - Professional Risk Theme */
+            --risk-primary: #1a1a2e;
+            --risk-secondary: #16213e;
+            --risk-accent: #e94560;
+            --risk-gold: #f39c12;
+            --risk-white: #ffffff;
+            --risk-gray: #f8f9fa;
+            --risk-dark-gray: #2c3e50;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%);
+            --gradient-secondary: linear-gradient(45deg, #16213e 0%, #f39c12 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            
+            /* Typography */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Spacing - 8px Grid System */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-normal: 300ms ease;
+            --transition-slow: 500ms ease;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #333;
-            background: #f8fafc;
+            color: var(--risk-dark-gray);
+            background: var(--risk-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 var(--space-4);
         }
 
-        /* Header */
-        .hero {
-            background: linear-gradient(135deg, #dc2626 0%, #7c2d12 100%);
-            color: white;
-            padding: 100px 0;
+        .container-premium {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+
+        /* Premium Hero Section */
+        .hero-premium {
+            background: var(--gradient-primary);
+            color: var(--risk-white);
+            padding: var(--space-20) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fbbf24, #ffffff);
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: var(--space-2) var(--space-4);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: var(--space-4);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: var(--space-5);
+            background: linear-gradient(45deg, var(--risk-white), var(--risk-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero .subtitle {
+        .hero-subtitle {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-weight: 300;
+            margin-bottom: var(--space-8);
             opacity: 0.9;
         }
 
-        .hero .tagline {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.8;
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-12);
         }
 
-        .cta-button {
+        .metric {
+            text-align: center;
+            padding: var(--space-4);
+            background: rgba(255,255,255,0.05);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--risk-gold);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button-premium {
             display: inline-block;
-            background: linear-gradient(45deg, #dc2626, #fbbf24);
-            color: white;
-            padding: 15px 30px;
+            background: var(--gradient-secondary);
+            color: var(--risk-white);
+            padding: var(--space-4) var(--space-8);
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-button:hover {
+        .cta-button-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .cta-button-premium:hover::before {
+            left: 100%;
+        }
+
+        .cta-button-premium:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+            box-shadow: var(--shadow-xl);
         }
 
-        /* Features */
-        .features {
-            padding: 80px 0;
-            background: white;
+        /* Premium Features Section */
+        .features-premium {
+            padding: var(--space-20) 0;
+            background: var(--risk-gray);
         }
 
-        .features h2 {
+        .section-header {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #dc2626;
+            margin-bottom: var(--space-12);
         }
 
-        .features-grid {
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--risk-primary);
+            margin-bottom: var(--space-4);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--risk-dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid-premium {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-8);
+        }
+
+        .feature-card-premium {
+            background: var(--risk-white);
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .feature-card-premium:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon-premium {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+            color: var(--risk-accent);
+        }
+
+        .feature-card-premium h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--risk-primary);
+            margin-bottom: var(--space-3);
+        }
+
+        .feature-card-premium p {
+            color: var(--risk-dark-gray);
+            margin-bottom: var(--space-4);
+            line-height: 1.6;
+        }
+
+        .feature-learn-more {
+            display: inline-block;
+            color: var(--risk-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition-fast);
+        }
+
+        .feature-learn-more:hover {
+            color: var(--risk-primary);
+        }
+
+        /* Premium How It Works */
+        .how-it-works-premium {
+            padding: var(--space-20) 0;
+            background: var(--risk-white);
+        }
+
+        .steps-premium {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: var(--space-8);
+            margin-top: var(--space-12);
         }
 
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .step-premium {
             text-align: center;
-            transition: transform 0.3s ease;
+            padding: var(--space-8);
+            background: var(--risk-gray);
+            border-radius: var(--radius-xl);
+            position: relative;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #7c2d12;
-        }
-
-        /* How it works */
-        .how-it-works {
-            padding: 80px 0;
-            background: #fef2f2;
-        }
-
-        .how-it-works h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #dc2626;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, #dc2626, #fbbf24);
-            color: white;
+        .step-number-premium {
+            position: absolute;
+            top: var(--space-4);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: var(--risk-white);
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
             font-size: 1.5rem;
-            font-weight: bold;
-            line-height: 50px;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-md);
         }
 
-        /* Beta Section */
-        .beta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #dc2626 0%, #7c2d12 100%);
-            color: white;
-            text-align: center;
+        .step-premium h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--risk-primary);
+            margin: var(--space-12) 0 var(--space-3) 0;
         }
 
-        .beta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .step-premium p {
+            color: var(--risk-dark-gray);
+            line-height: 1.6;
         }
 
-        .beta-form {
-            max-width: 500px;
+        /* Premium Beta Section */
+        .beta-premium {
+            background: var(--gradient-primary);
+            color: var(--risk-white);
+            padding: var(--space-20) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .beta-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid2)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .beta-form-premium {
+            max-width: 600px;
             margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            color: #333;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: var(--space-8);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .beta-form input {
+        .beta-form-premium h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--space-6);
+            color: var(--risk-white);
+        }
+
+        .beta-form-premium input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-md);
+            background: rgba(255,255,255,0.1);
+            color: var(--risk-white);
             font-size: 1rem;
+            transition: all var(--transition-normal);
         }
 
-        .beta-form button {
+        .beta-form-premium input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .beta-form-premium input:focus {
+            outline: none;
+            border-color: var(--risk-gold);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .beta-form-premium button {
             width: 100%;
-            background: linear-gradient(45deg, #dc2626, #fbbf24);
-            color: white;
-            padding: 12px;
+            background: var(--gradient-secondary);
+            color: var(--risk-white);
+            padding: var(--space-4);
             border: none;
-            border-radius: 6px;
+            border-radius: var(--radius-md);
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
+            transition: all var(--transition-normal);
         }
 
-        /* Footer */
-        .footer {
-            background: #7c2d12;
-            color: white;
-            padding: 40px 0;
+        .beta-form-premium button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Premium Footer */
+        .footer-premium {
+            background: var(--risk-primary);
+            color: var(--risk-white);
+            padding: var(--space-12) 0;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Responsive */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
+            .hero-title {
                 font-size: 2.5rem;
             }
             
-            .hero .subtitle {
+            .hero-subtitle {
                 font-size: 1.2rem;
             }
             
-            .features-grid {
-                grid-template-columns: 1fr;
+            .hero-metrics {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-3);
             }
             
-            .steps {
+            .features-grid-premium {
                 grid-template-columns: 1fr;
+                gap: var(--space-4);
             }
+            
+            .steps-premium {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .container-premium {
+                padding: 0 var(--space-4);
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--risk-white);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>RiskVector</h1>
-            <p class="subtitle">Risk Intelligence & Management Platform</p>
-            <p class="tagline">Navigate Your Risks with Intelligent Analytics</p>
-            <a href="#beta" class="cta-button">Teste die Alpha-App</a>
+    <!-- Premium Hero Section -->
+    <section class="hero-premium">
+        <div class="hero-content animate-fade-in">
+            <div class="hero-badge">
+                <i class="fas fa-shield-alt"></i> ENTERPRISE RISK INTELLIGENCE
+            </div>
+            <h1 class="hero-title">RiskVector</h1>
+            <p class="hero-subtitle">Real-time Risk Management Platform for Global Enterprises</p>
+            
+            <div class="hero-metrics">
+                <div class="metric">
+                    <span class="metric-value">195+</span>
+                    <span class="metric-label">Countries</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">24/7</span>
+                    <span class="metric-label">Monitoring</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">99.9%</span>
+                    <span class="metric-label">Accuracy</span>
+                </div>
+            </div>
+            
+            <a href="#beta" class="cta-button-premium">
+                <i class="fas fa-rocket"></i> Start Alpha Trial
+            </a>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2>Warum RiskVector?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Risk Intelligence</h3>
-                    <p>Real-time risk assessment and analysis for businesses and individuals</p>
+    <!-- Premium Features Section -->
+    <section class="features-premium">
+        <div class="container-premium">
+            <div class="section-header animate-fade-in">
+                <h2 class="section-title">Advanced Risk Intelligence</h2>
+                <p class="section-subtitle">Enterprise-grade tools for comprehensive risk management and strategic decision-making</p>
+            </div>
+            
+            <div class="features-grid-premium">
+                <div class="feature-card-premium animate-fade-in">
+                    <div class="feature-icon-premium">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Real-Time Analytics</h3>
+                    <p>Advanced risk assessment with real-time data processing and machine learning algorithms for predictive insights</p>
+                    <a href="#" class="feature-learn-more">
+                        Explore Analytics <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
+                
+                <div class="feature-card-premium animate-fade-in">
+                    <div class="feature-icon-premium">
+                        <i class="fas fa-globe"></i>
+                    </div>
                     <h3>Global Coverage</h3>
-                    <p>Risk monitoring across 195+ countries with local intelligence</p>
+                    <p>Comprehensive risk monitoring across 195+ countries with local intelligence and regional expertise</p>
+                    <a href="#" class="feature-learn-more">
+                        View Coverage <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI-Powered</h3>
-                    <p>Advanced algorithms for risk prediction and early warning systems</p>
+                
+                <div class="feature-card-premium animate-fade-in">
+                    <div class="feature-icon-premium">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Insights</h3>
+                    <p>Advanced artificial intelligence for risk prediction, early warning systems, and intelligent alert management</p>
+                    <a href="#" class="feature-learn-more">
+                        Learn About AI <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Real-Time Alerts</h3>
-                    <p>Instant notifications when risk levels change in your monitored areas</p>
+                
+                <div class="feature-card-premium animate-fade-in">
+                    <div class="feature-icon-premium">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Instant Alerts</h3>
+                    <p>Real-time notifications with customizable thresholds and multi-channel delivery for immediate response</p>
+                    <a href="#" class="feature-learn-more">
+                        Configure Alerts <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗺️</div>
+                
+                <div class="feature-card-premium animate-fade-in">
+                    <div class="feature-icon-premium">
+                        <i class="fas fa-route"></i>
+                    </div>
                     <h3>Risk Navigation</h3>
-                    <p>Intelligent routing and recommendations during high-risk situations</p>
+                    <p>Intelligent routing and strategic recommendations during high-risk situations with evacuation planning</p>
+                    <a href="#" class="feature-learn-more">
+                        Navigation Tools <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile First</h3>
-                    <p>Access risk intelligence anywhere with our mobile-optimized platform</p>
+                
+                <div class="feature-card-premium animate-fade-in">
+                    <div class="feature-icon-premium">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Intelligence</h3>
+                    <p>Native mobile applications with offline capabilities and seamless cross-platform synchronization</p>
+                    <a href="#" class="feature-learn-more">
+                        Mobile Apps <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How it works -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2>Wie RiskVector funktioniert</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Data Fusion</h3>
-                    <p>We aggregate risk data from multiple sources including government agencies, news outlets, and verified reports</p>
+    <!-- Premium How It Works -->
+    <section class="how-it-works-premium">
+        <div class="container-premium">
+            <div class="section-header animate-fade-in">
+                <h2 class="section-title">How RiskVector Works</h2>
+                <p class="section-subtitle">Three-step process for comprehensive risk management and intelligence gathering</p>
+            </div>
+            
+            <div class="steps-premium">
+                <div class="step-premium animate-fade-in">
+                    <div class="step-number-premium">1</div>
+                    <h3>Data Intelligence</h3>
+                    <p>We aggregate risk data from multiple sources including government agencies, financial institutions, news outlets, and verified field reports to build comprehensive risk profiles.</p>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
+                
+                <div class="step-premium animate-fade-in">
+                    <div class="step-number-premium">2</div>
                     <h3>AI Analysis</h3>
-                    <p>Our advanced AI processes and analyzes risk patterns to provide accurate assessments</p>
+                    <p>Our advanced AI processes and analyzes risk patterns using machine learning algorithms to provide accurate assessments and predictive insights for strategic decision-making.</p>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Intelligent Alerts</h3>
-                    <p>Receive timely alerts and actionable insights when risks emerge in your areas of interest</p>
+                
+                <div class="step-premium animate-fade-in">
+                    <div class="step-number-premium">3</div>
+                    <h3>Intelligent Response</h3>
+                    <p>Receive timely alerts and actionable insights when risks emerge in your areas of interest, with detailed recommendations for risk mitigation and strategic planning.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Beta Section -->
-    <section class="beta-section" id="beta">
-        <div class="container">
-            <h2>Werde Alpha-Tester</h2>
-            <p>Teste RiskVector als einer der Ersten und gestalte die Zukunft der Risk-Management-Apps mit uns.</p>
-            <div class="beta-form">
-                <h3 style="text-align: center; margin-bottom: 1rem;">Anmeldung für Alpha-Testing</h3>
+    <!-- Premium Beta Section -->
+    <section class="beta-premium" id="beta">
+        <div class="container-premium">
+            <div class="beta-form-premium animate-fade-in">
+                <h3><i class="fas fa-rocket"></i> Alpha Program Access</h3>
+                <p style="text-align: center; margin-bottom: var(--space-6); opacity: 0.9;">
+                    Join our exclusive alpha testing program and help shape the future of enterprise risk management. 
+                    Limited spots available for qualified organizations and professionals.
+                </p>
+                
                 <form action="https://github.com/michaelbueth-commits/riskvector/issues/new" method="get" target="_blank">
-                    <input type="hidden" name="title" value="Alpha-Test Anmeldung">
-                    <input type="hidden" name="labels" value="alpha-tester">
-                    <input type="text" name="body" placeholder="Dein Name oder Unternehmen" required>
-                    <input type="email" placeholder="Deine E-Mail-Adresse" required>
-                    <input type="text" placeholder="Telegram Benutzername (optional)">
-                    <button type="submit">Als Alpha-Tester anmelden</button>
+                    <input type="hidden" name="title" value="Alpha Program Application - RiskVector">
+                    <input type="hidden" name="labels" value="alpha-application">
+                    <input type="text" name="body" placeholder="Organization Name / Professional Title" required>
+                    <input type="email" placeholder="Business Email Address" required>
+                    <input type="text" placeholder="Phone Number (Optional)">
+                    <input type="text" placeholder="LinkedIn Profile (Optional)">
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> Apply for Alpha Access
+                    </button>
                 </form>
-                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
-                    Du wirst zu GitHub weitergeleitet, um deine Anmeldung zu übermitteln.
+                
+                <p style="text-align: center; margin-top: var(--space-4); font-size: 0.9rem; opacity: 0.7;">
+                    You will be redirected to GitHub to submit your application. 
+                    Our team will review and contact qualified applicants within 48 hours.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Premium Footer -->
+    <footer class="footer-premium">
         <div class="container">
-            <p>&copy; 2026 RiskVector.app - Alpha-Version. In Entwicklung.</p>
-            <p style="margin-top: 1rem; opacity: 0.7;">
-                Ein Projekt von Vector & Chief | Risk Intelligence Platform
+            <p>&copy; 2026 RiskVector.app | Enterprise Risk Intelligence Platform</p>
+            <p style="margin-top: var(--space-2); opacity: 0.7;">
+                Built with <i class="fas fa-heart" style="color: var(--risk-accent);"></i> by Vector & Chief | 
+                <span class="loading"></span> Real-time Risk Management
             </p>
         </div>
     </footer>
 
     <script>
-        // Simple smooth scrolling for anchor links
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -349,9 +710,9 @@
             });
         });
 
-        // Add some interactivity
+        // Intersection Observer for animations
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.feature-card, .step');
+            const animatedElements = document.querySelectorAll('.animate-fade-in');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -360,15 +721,37 @@
                         entry.target.style.transform = 'translateY(0)';
                     }
                 });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
 
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
             });
         });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card-premium').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Loading animation for footer
+        const loadingElement = document.querySelector('.loading');
+        if (loadingElement) {
+            loadingElement.style.display = 'inline-block';
+            loadingElement.style.verticalAlign = 'middle';
+            loadingElement.style.marginLeft = '8px';
+        }
     </script>
 </body>
 </html>
